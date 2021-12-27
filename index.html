@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>XmasCounter</title>
+  <style>
+    #svgelem{
+      position: relative;
+      left: 50%;
+      -webkit-transform: translateX(-20%);
+      -ms-transform: translateX(-20%);
+      transform: translateX(-20%);
+    }
+    body{
+      font-family: 'Courier New', monospace;
+    }
+  </style>
+</head>
+<body style="background-color:black;">
+
+  <h1 style="color:white;text-align:center;">Welcome to the Christmas Countdown!</h1>
+  <p style="color:lightblue;text-align:center;">Today is the  <span id="today"></span> </p>
+  <p style="color:lightblue;text-align:center;">There are <span id="diff" style="background-color: yellow;color:black;"></span> days till Christmas! </p>
+
+
+  <svg id = "svgelem" width="1000" height="380">
+    <!-- tree -->
+  	<path d="M120 370 L300 370 L200  230 Z" style="stroke:black;stroke-width:3;fill:rgb(34,139,69)" />
+    <path d="M130 310 L280 310 L200  200 Z" style="stroke:black;stroke-width:3;fill:rgb(34,139,69)" />
+    <path d="M150 250 L260 250 L200  150 Z" style="stroke:black;stroke-width:3;fill:rgb(34,139,69)" />
+
+    <!-- star -->
+    <g id="star">
+      <path d="
+        M 200.000 130.000
+        L 207.000 143.000
+        L 224.000 144.000
+        L 210.000 153.000
+        L 215.000 169.000
+        L 200.000 157.000
+        L 185.000 169.000
+        L 190.000 153.000
+        L 176.000 144.000
+        L 193.000 143.000
+        L 200.000 130.000"
+        style="fill:rgb(255,255,0);" />
+      <animateMotion dur="3s" values="0,-300; 0,0" fill="freeze"> />
+    </g>
+
+    <!-- balls -->
+    <circle cx="50" cy="50" r="8" fill="red">
+   	  <animateMotion dur="3s" values="105,0; 105,210" fill="freeze">/>
+    </circle>
+
+    <circle cx="35" cy="105" r="8" fill="red">
+      <animateMotion dur="2s" values="105,0; 105,210" fill="freeze">/>
+    </circle>
+
+    <circle cx="150" cy="50" r="8" fill="red">
+      <animateMotion dur="3s" values="105,0; 105,210" fill="freeze">/>
+    </circle>
+
+    <circle cx="70" cy="80" r="8" fill="red">
+      <animateMotion dur="3s" values="105,0; 105,210" fill="freeze">/>
+    </circle>
+
+    <circle cx="120" cy="70" r="7" fill="red">
+      <animateMotion dur="3s" values="105,0; 105,210" fill="freeze">/>
+    </circle>
+
+    <circle cx="90" cy="15" r="7" fill="red">
+      <animateMotion dur="2s" values="105,0; 105,210" fill="freeze">/>
+    </circle>
+
+    <circle cx="120" cy="25" r="7" fill="red">
+      <animateMotion dur="3s" values="105,0; 105,210" fill="freeze">/>
+    </circle>
+
+    <circle cx="142" cy="109" r="8" fill="red">
+      <animateMotion dur="2s" values="105,0; 105,210" fill="freeze">/>
+    </circle>
+
+    <circle cx="60" cy="140" r="9" fill="red">
+      <animateMotion dur="3s" values="105,0; 105,210" fill="freeze">/>
+    </circle>
+
+    <circle cx="100" cy="125" r="7" fill="red">
+      <animateMotion dur="3s" values="105,0; 105,210" fill="freeze">/>
+    </circle>
+
+    <circle cx="132" cy="140" r="8" fill="red">
+      <animateMotion dur="2s" values="105,0; 105,210" fill="freeze">/>
+    </circle>
+
+    Sorry, your browser does not support inline SVG. You're missing out the art (and the fun).
+  </svg>
+
+  <p id="element" style="color:white;text-align:center;"></p>
+
+  <script>
+    // Countdown calculation
+    var today = new Date();
+    var nearest = new Date();
+    nearest.setDate(nearest.getDate() + 8);
+    var year = nearest.getFullYear();
+    var xmas = new Date("Dec 25, " + year);
+    var diff = xmas - today;
+    diff = Math.floor(diff / (1000*60*60*24))
+    let dd = today.getDate();
+    let mm = today.getMonth()+1;
+    let yyyy = today.getFullYear();
+    if(dd<10){ dd=`0${dd}`; } 
+    if(mm<10){ mm=`0${mm}`; }
+    today = `${mm}-${dd}-${yyyy}`;
+    document.getElementById("today").innerHTML = today;
+    document.getElementById("diff").innerHTML = diff;
+
+    // Signature at the end
+    setTimeout(function() {
+      document.getElementById('element').innerHTML = 'h0ckeyst1ck';
+    }, 4000);
+  </script>
+
+</body>
+</html> 
+ 
